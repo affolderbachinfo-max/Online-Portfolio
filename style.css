@@ -1,0 +1,511 @@
+:root {
+    --accent: #007080;
+    --paper: #ffffff;
+    --ink: #141414;
+    --muted: #666;
+  }
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: 'FormaDJRMicro-ExtraLight', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background: #f5f5f5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+/* Header allgemein */
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+    height: 80px; /* ca. 15 cm auf Bildschirm umgerechnet */
+    background: #fff; /* Hintergrundfarbe nach Wunsch */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  
+  /* Logo */
+  .site-header .logo img {
+    height: 50px;   /* Logo-Höhe */
+    width: auto;     /* Breite automatisch */
+    object-fit: contain;
+    display: block;
+  }
+  
+  /* Navigation */
+  .main-nav {
+    display: flex;
+    gap: 28px;
+  }
+  
+  .main-nav a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+    transition: color 0.2s ease;
+  }
+  
+  .main-nav a:hover {
+    color: var(--accent); /* deine blaue Linie Farbe */
+  }
+  
+  
+  .main-nav a {
+    margin-left: 28px;
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  
+  .line {
+    display: block;
+    width: min(520px, 60%);
+    height: auto;
+    margin: 12px 0 20px;
+  }
+  
+ /* Hero allgemein */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 90vh;
+  padding: 0 20px;
+  color: white;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+}
+
+/* Startseite Hero */
+.home-hero {
+  background: url("IMG\ 1206-2.webp") center/cover no-repeat;
+}
+
+/* Projektseite Hero */
+.project-hero {
+  background: url("Alster.webp") center/cover no-repeat;
+}
+
+  
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4); /* leichte Abdunklung für bessere Lesbarkeit */
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 1; /* liegt über dem Overlay */
+    max-width: 900px;
+  }
+  
+  .hero h1 {
+    font-family: 'BebasNeue-Regular', 'Anton', sans-serif;
+    font-size: clamp(44px, 8vw, 104px);
+    line-height: 0.92;
+    margin-bottom: 12px;
+  }
+  
+  .hero .strap {
+    font-weight: 700;
+    margin-top: 10px;
+    color: var(--accent);
+    letter-spacing: 0.3px;
+  }
+  
+  .hero .sub {
+    margin-top: 8px;
+    opacity: .95;
+  }
+ /* Nur Startseite bekommt Overlay */
+.home-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4); /* Abdunklung */
+}
+
+/* Bei Projekten KEIN Overlay */
+.project-hero::after {
+  content: none;
+}
+ 
+  
+  .about { background: var(--paper); }
+  
+  .about-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 56px 64px;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr; /* Bild links, Text rechts */
+    gap: 56px;
+    align-items: start;
+  }
+  
+  .about .image img {
+    width: 100%;
+    max-width: 520px;
+    border-radius: 16px;
+    display: block;
+    box-shadow: 0 10px 30px rgba(0,0,0,.06);
+  }
+  
+  .name {
+    font-family: 'BebasNeue-Regular', 'Anton', 'Oswald', sans-serif;
+    font-size: clamp(48px, 6vw, 92px);
+    line-height: 0.9;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  
+  .intro {
+    font-size: 20px;
+    margin: 6px 0 12px;
+  }
+  
+  .about p {
+    max-width: 58ch;
+    margin-bottom: 10px;
+  }
+  
+  .about-rotated {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: rotate(-90deg) translateY(-50%);
+    transform-origin: right top;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--muted);
+    opacity: .9;
+  }
+  
+  .about .text { position: relative; }
+  
+ 
+  .project-hero {
+    position: relative;
+    min-height: 100vh; /* nimmt den ganzen Bildschirm ein */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .project-hero img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* zeigt das gesamte Bild ohne Croppen */
+    background: #000; /* schwarze Ränder, falls Seitenverhältnis nicht passt */
+  }
+  
+  .project-hero .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4); /* Abdunklung für bessere Lesbarkeit */
+  }
+  
+  .project-hero .hero-text {
+    position: relative;
+    z-index: 1; /* Text liegt über Bild + Overlay */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .project-hero h1 {
+    font-family: 'BebasNeue-Regular', sans-serif;
+    font-size: clamp(40px, 6vw, 80px);
+    margin-bottom: 12px;
+  }
+  
+  
+  
+  .projects h2 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 56px 8px;
+    font-size: 28px;
+    letter-spacing: 0.3px;
+  }
+  
+  
+  .projects .grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 56px 64px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+  
+  .card figcaption {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  
+  .contact {
+    background: var(--paper);
+    max-width: 1000px;
+    margin: 0 auto 40px;
+    padding: 40px 56px 56px;
+    text-align: center;
+  }
+  
+  .btn {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 12px 20px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+  }
+  
+  .site-footer {
+    background: var(--paper);
+    padding: 24px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    color: #666;
+  }
+  
+  @media (max-width: 1100px) {
+    .projects .grid { grid-template-columns: 1fr 1fr; }
+  }
+  
+  @media (max-width: 780px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .about-rotated {
+      position: static;
+      transform: none;
+      margin-top: 10px;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .site-header { padding: 20px; }
+    .main-nav a { margin-left: 16px; }
+    .hero { padding: 64px 20px 32px; }
+    .projects h2 { padding: 28px 20px 8px; }
+    .projects .grid {
+      padding: 0 20px 32px;
+      grid-template-columns: 1fr;
+    }
+    .contact { padding: 28px 20px 40px; }
+
+    .card {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      
+      .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+      }
+      
+      .card img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        display: block;
+      }
+      
+      .card .caption {
+        display: block;
+        padding: 12px 16px;
+        font-size: 15px;
+        font-weight: 500;
+        background: #fff;
+      }
+
+      /* Projekt Hero */
+.project-hero {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .project-hero img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .project-hero .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+  }
+  .project-hero .hero-text {
+    position: relative;
+    color: #fff;
+    text-align: center;
+    z-index: 1;
+  }
+  .project-hero h1 {
+    font-family: 'BebasNeue-Regular', sans-serif;
+    font-size: clamp(40px, 6vw, 80px);
+    margin-bottom: 12px;
+  }
+  .project-hero .sub {
+    font-size: 18px;
+    opacity: 0.9;
+  }
+  
+  /* Projekt Content */
+  .project-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 20px;
+  }
+  .project-content h2 {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+  .project-content p {
+    margin-bottom: 14px;
+  }
+  .project-content ul {
+    margin: 12px 0 20px 20px;
+    list-style: disc;
+  }
+  
+  /* Text + Bild nebeneinander */
+  .text-image {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+  .text-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  }
+  
+/* Galerie-Bilder im Projekt */
+.gallery {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.gallery h2 {
+  font-size: 28px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.gallery .card {
+  display: block;
+  margin-bottom: 40px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.gallery .card img {
+  width: 100%;
+  max-height: 90vh;   /* etwas kleiner als ganzer Screen */
+  height: auto;       /* passt sich der Bildproportion an */
+  object-fit: cover;  /* füllt mehr Bildfläche */
+  border-radius: 12px;
+  background: #000;   /* optional: nur sichtbar wenn Seitenverhältnis nicht passt */
+}
+
+
+
+.gallery .caption {
+  display: block;
+  margin-top: 12px;
+  font-size: 16px;
+  text-align: center;
+  color: var(--muted);
+}
+
+  }
+  /* Impressum Seite */
+.impressum {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 20px 80px;
+  background: var(--paper);
+}
+
+.impressum h1 {
+  font-family: 'BebasNeue-Regular', sans-serif;
+  font-size: clamp(42px, 6vw, 72px);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.impressum .line {
+  margin: 0 auto 40px;
+}
+
+.impressum-section {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.impressum-section h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+
+.impressum-section p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.impressum a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.impressum a:hover {
+  text-decoration: underline;
+}
+  
+  
+     
